@@ -1,13 +1,4 @@
-FROM node:20
+FROM ubuntu:latest
+LABEL authors="Bryan Keating"
 
-WORKDIR /app
-
-COPY package.json package-lock.json ./
-
-RUN npm install
-
-COPY . .
-
-RUN npm run build
-
-CMD ["npm", "run", "preview", "--", "--host"]
+ENTRYPOINT ["top", "-b"]
