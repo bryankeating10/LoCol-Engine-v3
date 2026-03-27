@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship as rel
 from datetime import datetime
 
 class Quant(Base):
-    __tablename__ = 'quant'
+    __tablename__ = 'quants'
 
     # Identification
     id = Column(Integer, primary_key=True)
