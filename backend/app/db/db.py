@@ -15,8 +15,11 @@ db = getenv("POSTGRES_DB")
 DATABASE_URL = f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{db}"
 engine = create_engine(DATABASE_URL)
 
-# Create the database session
-Base = DeclarativeBase()
+# Create a base class for models
+class Base(DeclarativeBase):
+    pass
+
+# Create a session local to the current thread
 SessionLocal = sessionmaker(
     autocommit=False,
     autoflush=False,

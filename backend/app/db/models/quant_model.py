@@ -1,6 +1,7 @@
-from app.db import Base
-from sqlalchemy import Column, Integer, String
+from app.db.db import Base
+from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.orm import relationship as rel
+from datetime import datetime
 
 class Quant(Base):
     __tablename__ = 'quant'
@@ -11,3 +12,6 @@ class Quant(Base):
 
     # Relationships
     testers = rel('Tester', back_populates='quant')
+
+    # Time stamp
+    created_at = Column(DateTime, default=datetime.now, nullable=False)

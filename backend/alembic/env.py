@@ -20,11 +20,11 @@ if config.config_file_name is not None:
 # target_metadata = mymodel.Base.metadata
 from app.db.db import Base
 from app.db.models.quant_model import Quant
-from app.db.models.tester_model import Tester
-from app.db.models.casino_model import Casino
-from app.db.models.account_model import Account
-from app.db.models.location_model import Location
-from app.db.models.action_model import Action
+# from app.db.models.tester_model import Tester
+# from app.db.models.casino_model import Casino
+# from app.db.models.account_model import Account
+# from app.db.models.location_model import Location
+# from app.db.models.action_model import Action
 
 target_metadata = Base.metadata
 
