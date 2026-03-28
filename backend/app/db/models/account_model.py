@@ -24,4 +24,3 @@ class Account(Base):
     # Time stamp
     created_at = Column(DateTime, default=datetime.now, nullable=False)
     updated_at = Column(DateTime, default=datetime.now, nullable=False, onupdate=datetime.now)
-
