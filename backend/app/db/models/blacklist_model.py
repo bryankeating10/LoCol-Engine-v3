@@ -16,8 +16,8 @@ class Blacklist(Base):
     active = Column(Boolean, nullable=False, default=True)
 
     # Relationships
-    location = rel('Location', backpopulates='blacklists')
-    casino = rel('Casino', backpopulates='blacklists')
+    location = rel('Location', back_populates='blacklists')
+    casino = rel('Casino', back_populates='blacklists')
 
     # Time stamp
     created_at = Column(DateTime, default=datetime.now, nullable=False)
