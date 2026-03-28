@@ -1,5 +1,5 @@
 from app.db.db import Base
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Boolean
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Boolean, Float
 from sqlalchemy.orm import relationship as rel
 from datetime import datetime
 
@@ -8,16 +8,34 @@ class Bonus(Base):
 
     # Identification
     id = Column(Integer, primary_key=True)
-    name = Column(String, unique=True, nullable=False)
+    name = Column(String, unique=True, nullable=False) # Ex. FanDuel $1000 Deposit Lossback
 
     # Information
-    casino_id = Column(Integer, ForeignKey('casinos.id'))
-    bonus_type = Column(String, nullable=False)
-    bonus_value = Column(Integer, nullable=False)
-    location_sensitive = Column(Boolean, nullable=False)
+    account_id = Column(Integer, ForeignKey('accounts.id'))
+    category = Column(String, nullable=False)
+    """
+    Bonus categories:
+    - Sign-Up
+    - Reload
+    - VIP
+    - Other
+    """
+    type = Column(String, nullable=False)
+    """
+    Bonus types:
+    - Match
+    - Loss Back
+    - Bet Back
+    - Other
+    """
+    rollover_multiplier = Column(Integer, nullable=True)
+    volatility_rtp = Column(Float, nullable=True)
+    rollover_rtp = Column(Float, nullable=True)
+    expected_value = Column(Integer, nullable=True)
+    location_sensitive = Column(Boolean, nullable=False, default=False)
 
     # Relationships
-    casino = rel('Casino', back_populates='bonuses')
+    account = rel('Account', back_populates='bonuses')
 
     # Time stamp
     discovery = Column(DateTime, nullable=False, default=datetime.now)

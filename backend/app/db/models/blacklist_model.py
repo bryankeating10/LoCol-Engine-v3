@@ -1,5 +1,5 @@
 from app.db.db import Base
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Boolean
 from sqlalchemy.orm import relationship as rel
 from datetime import datetime
 
@@ -13,6 +13,7 @@ class Blacklist(Base):
     location_id = Column(Integer, ForeignKey('locations.id'), nullable=False)
     casino_id = Column(Integer, ForeignKey('casinos.id'), nullable=False)
     probable_action_id = Column(Integer, nullable=True)
+    active = Column(Boolean, nullable=False, default=True)
 
     # Relationships
     location = rel('Location', backpopulates='blacklists')
